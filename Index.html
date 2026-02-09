@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Просто так</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .box {
+      max-width: 400px;
+    }
+    button {
+      margin: 10px;
+      padding: 12px 18px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+    }
+    .primary {
+      background: #fff;
+      color: #111;
+    }
+    .secondary {
+      background: #333;
+      color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box" id="app">
+  <p>Це маленька штука.<br>Нічого відповідати не треба 🙂</p>
+  <button class="primary" onclick="step2()">Подивитись</button>
+</div>
+
+<script>
+  function step2() {
+    document.getElementById('app').innerHTML = `
+      <p>Що тобі зараз ближче?</p>
+      <button class="secondary" onclick="choose('тепло')">🫖 Тепло і спокій</button>
+      <button class="secondary" onclick="choose('поруч')">🚶‍♀️ Повільно бути поруч</button>
+      <button class="secondary" onclick="choose('сміх')">😄 Сміятись разом</button>
+    `;
+  }
+
+  function choose(answer) {
+    console.log("Вона обрала:", answer);
+
+    document.getElementById('app').innerHTML = `
+      <p>
+        Тоді ми десь на одній хвилі.<br>
+        Бо саме так я відчуваю час поряд з тобою.
+      </p>
+      <button class="secondary" onclick="finalChoice('вечір')">☕ Продовжити ввечері</button>
+      <button class="secondary" onclick="finalChoice('тут')">🤍 Залишити це тут</button>
+    `;
+  }
+
+  function finalChoice(result) {
+    console.log("Фінальний вибір:", result);
+
+    document.getElementById('app').innerHTML = `
+      <p>Дякую, що подивилась 🌙</p>
+      <small>Цей текст існує тільки для тебе.</small>
+    `;
+
+    // Якщо хочеш БІЛЬШ ЯВНО — розкоментуй:
+    // alert("Вибір: " + result);
+  }
+</script>
+
+</body>
+</html>
