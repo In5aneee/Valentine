@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Для тебе</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 60px;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 350px;
+      margin: auto;
+      box-shadow: 0 0 25px rgba(255,0,80,0.4);
+    }
+    button {
+      margin: 12px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .yes { background: #ff2f6d; color: white; }
+    .maybe { background: #444; color: white; }
+  </style>
+</head>
+<body>
+
+<div class="card" id="step1">
+  <h2>Є питання 😊</h2>
+  <p>
+    За ці кілька зустрічей ти стала для мене
+    кимось дуже теплим.<br><br>
+    Мені добре поруч з тобою.
+  </p>
+  <button class="yes" onclick="next()">Продовжити</button>
+</div>
+
+<div class="card" id="step2" style="display:none;">
+  <h2>Хочу бути чесним</h2>
+  <p>
+    Це не тиск і не вимога.<br><br>
+    Просто цікаво — як ти це відчуваєш?
+  </p>
+  <button class="yes" onclick="answer('yes')">Мені теж добре з тобою</button>
+  <button class="maybe" onclick="answer('think')">Мені треба ще трохи часу</button>
+</div>
+
+<div class="card" id="result" style="display:none;"></div>
+
+<script>
+function next() {
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'block';
+}
+
+function answer(type) {
+  document.getElementById('step2').style.display = 'none';
+  const res = document.getElementById('result');
+  res.style.display = 'block';
+
+  if (type === 'yes') {
+    res.innerHTML = `
+      <h2>Тоді це особливо ❤️</h2>
+      <p>
+        Я радий, що ми на одній хвилі.<br>
+        Хочу сьогодні просто побути разом.
+      </p>`;
+  } else {
+    res.innerHTML = `
+      <h2>Я розумію 🌿</h2>
+      <p>
+        Дякую за чесність.<br>
+        Мені все одно приємно бути поруч.
+      </p>`;
+  }
+}
+</script>
+
+</body>
+</html>
